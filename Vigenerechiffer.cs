@@ -1,4 +1,4 @@
-namespace gerdasVigenereChiffer
+namespace juliasVigenereChiffer
 {
     class Program
     {
