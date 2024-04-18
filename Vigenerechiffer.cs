@@ -13,20 +13,20 @@ namespace juliasVigenereChiffer
                 Console.WriteLine("LOADING...");
                 Console.ReadKey();
                 Console.WriteLine("Skriv in nyckelord.");
+                string keywordInput = Console.ReadLine();
+                Console.WriteLine("Skriv in det du önskar kryptera.");
                 string userinput = Console.ReadLine();
-                char[] keyword = userinput.ToCharArray(); //delar in användardatan till nyckelordet som ska användas
-                int[] numericRefKey = new int[keyword.Length]; //siffrorna som respresenterar bokstäverna i nyckelordet
+                char[] secret = userinput.ToCharArray(); //arrayen av tecknena som ska omvandlas
+                char[] keyword = keywordInput.ToCharArray(); //delar in användardatan till nyckelordet som ska användas
+                int[] numericRefKey = new int[userinput.Length]; //siffrorna som respresenterar bokstäverna i nyckelordet
 
 
                 for (int i = 0; i < keyword.Length; i++)
                 {
-                    numericRefKey[i] = (int)keyword[i]; //här tilldelas siffrorna som respresenterar nyckelordets tecken
+                    numericRefKey[i] = (int)keyword[i%keyword.Length]; //här tilldelas siffrorna som respresenterar nyckelordets tecken
                 }
 
-                Console.WriteLine("Skriv in det du önskar kryptera.");
-                userinput = Console.ReadLine();
-                char[] secret = userinput.ToCharArray(); //arrayen av tecknena som ska omvandlas
-
+            
                 int[] numericRefSecret = new int[secret.Length]; //talen som respresenterar tecknena i secret
                 int[] keyIndexes = new int[secret.Length]; //index för nyckeltalen
                 int[] newOutputIndex = new int[secret.Length]; //indexen som räknas ut mha modulus
